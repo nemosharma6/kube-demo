@@ -2,6 +2,9 @@
 
 download docker for desktop. go to preferences and start a kubernetes cluster
 
+#### kubernetes 101
+https://www.youtube.com/watch?v=H-FKBoWTVws   
+
 #### build and push image to docker hub
 sbt compile   
 sbt docker    
