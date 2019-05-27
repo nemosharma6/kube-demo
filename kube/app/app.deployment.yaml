@@ -1,0 +1,32 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: redis-app
+spec:
+  selector:
+    matchLabels:
+      app: redis-app
+      tier: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-app
+        tier: app
+    spec:
+      containers:
+        - name: kube-demo
+          image: docker.io/nimish6/kube-demo:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: REDIS_HOST
+              value: 'redis-master'
+            - name: REDIS_PORT
+              value: '6379'
+          ports:
+            - containerPort: 8080

@@ -10,6 +10,12 @@ trait Config {
   val httpPort: Int = httpConfig.getInt("port")
 
   private val redisConfig = config.getConfig("redis")
-  val redisHost: String = redisConfig.getString("host")
-  val redisPort: Int = redisConfig.getInt("port")
+  val redisHost: String = System.getenv("REDIS_MASTER_SERVICE_HOST") match {
+    case null => redisConfig.getString("host")
+    case host => host
+  }
+  val redisPort: Int = System.getenv("REDIS_MASTER_SERVICE_PORT") match {
+    case null => redisConfig.getInt("port")
+    case port => port.toInt
+  }
 }
