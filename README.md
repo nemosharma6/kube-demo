@@ -1,5 +1,4 @@
-### kube-demo
-playing with kubernetes
+### kube-demo : playing with kubernetes
 
 download docker for desktop. go to preferences and start a kubernetes cluster
 
@@ -13,7 +12,7 @@ docker push <repo_name>
 #### setup context
 kubectl config use-context docker-for-desktop   
 
-#### setup redis master and slave
+#### setup redis master and slave. yaml files contained in kube folder.
 kubectl apply -f redis-master.deployment.yaml   
 kubectl apply -f redis-slave.deployment.yaml    
 kubectl apply -f redis-master.service.yaml        
